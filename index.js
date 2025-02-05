@@ -27,10 +27,26 @@ function processInput() {
     distances.push(num);
     distance += num;
   }
+  let similar = [];
+  for (let i = 0; i < sortedA.length; i++) {
+    let count = 0;
+    for (let j = 0; j < sortedB.length; j++) {
+      if (sortedA[i] === sortedB[j]) {
+        count++;
+      }
+    }
+    similar.push(sortedA[i] * count);
+  }
+  let sum = 0;
+  for (let s = 0; s < similar.length; s++) {
+    sum += similar[s];
+  }
+  console.log(similar);
 
   document.getElementById("arrayA").textContent = a.join(", ");
   document.getElementById("arrayB").textContent = b.join(", ");
   document.getElementById("sortedA").textContent = sortedA.join(", ");
   document.getElementById("sortedB").textContent = sortedB.join(", ");
-  document.getElementById("distance").textContent = distance; // Added missing distance display
+  document.getElementById("distance").textContent = distance; // Added distance display
+  document.getElementById("score").textContent = sum;
 }
